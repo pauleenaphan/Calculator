@@ -55,3 +55,18 @@ function operate(num1, operator, num2){
             break;
     }
 }
+var displayVal = document.getElementById("screen");
+var num = document.getElementsByClassName("num");
+
+//adding eventlisteners to each button since we are getting them by class
+var numbtn = document.getElementsByClassName("num");
+for(let i = 0; i < numbtn.length; i++){
+    numbtn[i].addEventListener("click", changeDisplay);
+}
+
+
+function changeDisplay(evt){
+    console.log(evt.target);
+    displayVal.innerHTML = evt.target.innerHTML;
+}
+
