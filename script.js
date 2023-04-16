@@ -41,32 +41,49 @@ function divide(){
 
 function operate(num1, operator, num2){
     switch(operator){
-        case add:
-            add(num1, num2);
+        case "+":
+            return add(num1, num2);
             break;
-        case subtract:
-            subtract(num1, num2);
+        case "-":
+            return subtract(num1, num2);
             break
-        case multiply:
-            multiply(num1, num2);
+        case "*":
+            return multiply(num1, num2);
             break;
-        case divide:
-            divide(num1, num2);
+        case "/":
+            return divide(num1, num2);
             break;
     }
 }
 var displayVal = document.getElementById("screen");
 var num = document.getElementsByClassName("num");
-
+var oper = document.getElementsByClassName("operator");
+var currNum1 = 90000, currNum2 = 90000;
 //adding eventlisteners to each button since we are getting them by class
 var numbtn = document.getElementsByClassName("num");
 for(let i = 0; i < numbtn.length; i++){
     numbtn[i].addEventListener("click", changeDisplay);
 }
 
+for(let i = 0; i < oper.length; i++){
+    oper[i].addEventListener("click", changeDisplay);
+}
 
 function changeDisplay(evt){
     console.log(evt.target);
     displayVal.innerHTML = evt.target.innerHTML;
+    if(currNum1 == 90000){
+        currNum1 = evt.target.innerHTML;
+    }else{
+        currNum2 = evt.target.innerHTML;
+    }
+    if(evt.target.innerHTML){
+        alert("hey");
+    }
 }
 
+/*
+function solve(evt){
+    displayVal.innerHTML = operate(currNum1, evt.target.innerHTML, currNum2);
+    changeDisplay(displayVal);
+}*/
