@@ -80,7 +80,7 @@ function operate(num1, operator, num2){
 
 function changeDisplay(evt){
     //if numberbtn is pressed
-    
+    /*
     if(isNaN(evt.target.innerHTML) == false){
         if(count == 1){
             displayVal.innerHTML = " ";
@@ -109,6 +109,45 @@ function changeDisplay(evt){
         displayVal.innerHTML = evt.target.innerHTML;
         count++;
     }
-    
+    */
+   
+    //check if the value is a number then we need to keep udating the display
+    if(isNaN(evt.target.innerHTML) == false){
+        //updates the display to keep number going
+        if(count == 1){
+            displayVal.innerHTML = "";                                              
+            count++;                                                                  
+        }
+        
+        displayVal.innerHTML = displayVal.innerHTML + evt.target.innerHTML;         
+        if(currnum1 != 0){
+            currnum2 = Number(displayVal.innerHTML);
+            count++;                                     
+        }
+    }else if(isNaN(evt.target.innerHTML) == true){
+        //if the user pressed = thsen it should calc the 2 numbers
+        if(evt.target.innerHTML == oper[3].innerHTML){
+            //if num1 and num2 are not empty then solve
+            
+            if(count == 3){
+                /*
+                let sum = operate(currnum1, currop, currnum2);S
+                displayVal.innerHTML = sum;
+                */
+                console.log(Number(currnum1) + Number(currnum2));
+            }
+            //if the user presses a operator then we need to solve
+        }else{
+            //if num1 is filled then we go to num2                      
+            if(currnum1 == 0){
+                currnum1 = Number(displayVal.innerHTML);                        
+            }
+            //update screen to current operator
+            displayVal.innerHTML = evt.target.innerHTML;                
+            //store our operator
+            currop = evt.target.innerHTML;                              
+            count++;                                                    
+        }
+    }
 
 }
